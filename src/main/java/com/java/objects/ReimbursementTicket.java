@@ -56,7 +56,7 @@ public class ReimbursementTicket {
 		ticketType = ticket_type;
 	}
 
-	void setTicketDescription(String description) {
+	public void setTicketDescription(String description) {
 		ticketDescription = description;
 	}
 

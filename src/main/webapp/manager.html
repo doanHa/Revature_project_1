@@ -20,38 +20,57 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
-					<form method="post" action="GetAllUserTicket.do"
-						class="nav-button-custom">
+				<li class="nav-item">
+					<form method="get" action="manager.html" class="nav-button-custom">
 						<button type="submit" class="btn btn-outline-success my-2 my-sm-0">Get
 							My Tickets</button>
 					</form>
 				</li>
 				<li class="nav-item">
-					<form method="post" action="createNewRequest.do"
+					<form method="post" action="create-new-request-manager.do"
 						class="nav-button-custom">
-						<button type="submit" class="btn btn-outline-success my-2 my-sm-0">Create
+						<button type="submit" class="btn btn-outline-success">Create
 							new request</button>
 					</form>
 				</li>
-				<li class="nav-item active">
-					<form method="post" action="Approve-Deny.do"
-						class="nav-button-custom">
-						<button type="submit" class="btn btn-outline-success my-2 my-sm-0">Show
-							Pending Tickets</button>
-					</form>
+
+				<li class="nav-item">
+					<button type="button" class="btn btn-outline-success"
+						id="pending_button">Show pending request</button>
+				</li>
+				<li class="nav-item">
+					<button type="button" class="btn btn-outline-success"
+						id="resolved_button">Show resolved request</button>
+				</li>
+				<li class="nav-item">
+					<button type="button" class="btn btn-outline-success"
+						id="manager-button">Resolve Request</button>
 				</li>
 			</ul>
-			<form class="form-inline my-2 my-lg-0" method="get"
+			<form class="form-inline my-2 my-lg-0" method="post"
 				action="logout.do">
 				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
 			</form>
 		</div>
 	</nav>
-
-
-	<p>This is Manager.html</p>
-	
+	<div>
+		<h1 id="table-title">Here is the list of your reimbursement
+			ticket</h1>
+		<table id="user-ticket" class="table">
+			<tr>
+				<th>Ticket ID</th>
+				<th>Amount</th>
+				<th>Date Submitted</th>
+				<th>Description</th>
+				<th>Date Resolved</th>
+				<th>Resolver ID</th>
+				<th>Ticket Status</th>
+				<th>Ticket Type</th>
+			</tr>
+		</table>
+	</div>
+	<script src="preload.js"></script>
+	<script src="manager-script.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>

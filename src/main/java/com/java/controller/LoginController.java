@@ -24,4 +24,12 @@ public class LoginController{
 		}
 		return "index.html";
 	}
+	public static String goHome(HttpServletRequest req) {
+		HttpSession s = req.getSession();
+		if(s==null) return "index.html";
+		ERS_User user = (ERS_User)req.getAttribute("User");
+		if(user.getUserRoleID() == 1)
+			return "manager.html";
+		return "employee.html";
+	}
 }

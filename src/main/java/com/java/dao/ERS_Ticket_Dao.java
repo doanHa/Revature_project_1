@@ -6,5 +6,5 @@ import com.java.objects.ReimbursementTicket;
 
 public interface ERS_Ticket_Dao {
 	Set<ReimbursementTicket> getAllTicket();
-	ReimbursementTicket getTicket();
+	Set<ReimbursementTicket> getAllTicketBasedOnUserID(int userID);
 }

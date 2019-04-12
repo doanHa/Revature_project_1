@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Employee Page</title>
+<title>Pending Ticket View</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -10,6 +10,7 @@
 <link href="style-employee.css" rel="stylesheet" id="style">
 </head>
 <body>
+
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="#">Revature</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -35,15 +36,6 @@
 							new request</button>
 					</form>
 				</li>
-
-				<li class="nav-item">
-					<button type="button" class="btn btn-outline-success" id="pending_button">Show
-						pending request</button>
-				</li>
-				<li class="nav-item">
-					<button type="button" class="btn btn-outline-success" id="resolved_button">Show
-						resolved request</button>
-				</li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0" method="post"
 				action="logout.do">
@@ -51,24 +43,47 @@
 			</form>
 		</div>
 	</nav>
-	<div>
-		<h1 id="table-title">Here is the list of your reimbursement ticket</h1>
-		<table id="user-ticket" class="table">
-			<tr>
-				<th>Ticket ID</th>
-				<th>Amount</th>
-				<th>Date Submitted</th>
-				<th>Description</th>
-				<th>Date Resolved</th>
-				<th>Resolver ID</th>
-				<th>Ticket Status</th>
-				<th>Ticket Type</th>
-			</tr>
-		</table>
-	</div>
-	<script src="preload.js"></script>
-	<script src="employee-script.js"></script>
 
+	<form method="post" action="resolve.do" id="ticket">
+		<div class="col-xl-8 col-md-6 offset-xl-2 offset-md-1">
+			<h1 id="ticket_id">Ticket ID:</h1>
+		</div>
+		<div class="col-xl-8 col-md-6 offset-xl-2 offset-md-1">
+			<h1 id="amount">Amount: $</h1>
+		</div>
+		<div class="col-xl-8 col-md-6 offset-xl-2 offset-md-1">
+			<h1 id="ticket_type">Type</h1>
+		</div>
+		<br />
+		<div class="col-xl-8 col-md-6 offset-xl-2 offset-md-1">
+			<h1 id="ticket_desc">Enter Ticket Description here.</h1>
+		</div>
+		<div class="col-xl-12 col-md-10 offset-xl-3 offset-md-3">
+
+			<button type="submit" class="btn btn-primary btn-md"
+				id="submit_button">
+				Submit <i class="fa fa-sign-in"></i>
+			</button>
+
+		</div>
+	</form>
+	<script>
+		function ajax(url, myFunction) {
+			var xhttp = new XMLHttpRequest()
+					|| new ActiveXObject("Microsoft.HTTPRequest");
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					myFunction(this);
+				}
+			};
+			xhttp.open("GET", url);
+			xhttp.send();
+		}
+		ajax("http://localhost:8080/ExpenseReimbursementSystem/getTicket.change", display());
+		function display(xhr){
+			
+		}
+	</script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>

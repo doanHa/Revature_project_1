@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import com.java.dao.ERS_Ticket_DaoImpl;
 import com.java.dao.ERS_User_DaoImpl;
+import com.java.objects.ERS_User;
 import com.java.objects.ReimbursementTicket;
 
 public class SubmitTicketController {
@@ -28,12 +29,8 @@ public class SubmitTicketController {
 			System.out.println("Invalid Amount");
 		}
 		String reimb_description = req.getParameter("ticket-description");
-		
-		System.out.println("3.1" + reimb_amount);
-		System.out.println("3.2" + reimb_type);
-		System.out.println("3.3" + reimb_description);
 		ticketDao.insertNewTicket(reimb_amount, (int)s.getAttribute("userid"), reimb_type, reimb_description);
-		System.out.println("Finished");
-		return "index.html";
+		if(((ERS_User)s.getAttribute("User")).getUserRoleID() == 1) return "manager.html";
+		return "employee.html";
 	}
 }

@@ -9,16 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.java.util.RequestHelper;
-public class MasterServlet extends HttpServlet{
+
+public class MasterServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		System.out.println("We are here 1");
 		String url = RequestHelper.process(req, resp);
 		resp.sendRedirect(url);
 	}
+
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException ,IOException {
-		System.out.println("1.1 We are here");
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("We are here 2");
 		String url = RequestHelper.process(req, resp);
 		req.getRequestDispatcher(url).forward(req, resp);
 	}
